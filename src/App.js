@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
 import './App.css';
+import Category from './Category/Category';
+import categories from './Data/data';
+
 
 function App() {
   window.OneSignal = window.OneSignal || [];
@@ -39,14 +42,16 @@ function App() {
   }, []);
 
 
-   const onSubscribe = () => {
-    OneSignal.sendTags({ category: 'ReactJS' });
-    alert('Thanks for subscribing to ReactJS')
+   const subscriptionHandler = (label, tag) => {
+    OneSignal.sendTags({ category: tag });
+    alert(`Thanks for subscribing to ${label}`)
    }
 
   return (
-    <div className="App">
-     <button onClick={onSubscribe}>Subscribe to REACT JS</button>
+    <div className="grid-container">
+      {
+         categories.map((category, index) => <Category key={index} {...category} onSubscribe={subscriptionHandler}/>)
+      }
     </div>
   );
 }
