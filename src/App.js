@@ -37,14 +37,13 @@ function App() {
           "message": "Thanks for subscribing!",
         } 
       });
-      // OneSignal.setEmail("devpatovg@gmail.com");
+      // OneSignal.setEmail("example@gmail.com");
     });
   }, []);
 
 
    const subscriptionHandler = (tag) => {
     OneSignal.push(()=> {
-      console.log('sendTag', tag)
       OneSignal.sendTags({ category: tag });
     });
    }
