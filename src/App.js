@@ -1,8 +1,5 @@
 import { useEffect } from 'react';
 import './App.css';
-import Category from './Category/Category';
-import categories from './Data/data';
-
 
 function App() {
   window.OneSignal = window.OneSignal || [];
@@ -15,19 +12,27 @@ function App() {
           promptOptions: {
             slidedown: {
               enabled: true,
-              actionMessage: "We'd like to show you notifications for the latest news and updates.",
+              actionMessage: "We'd like to show you notifications for the latest news and updates about the following categories.",
               acceptButtonText: "OMG YEEEEESS!",
               cancelButtonText: "NAHHH",
               categories: {
                   tags: [
                       {
-                          tag: "New Version",
-                          label: "New App Version",
+                          tag: "react",
+                          label: "ReactJS",
                       },
                       {
-                        tag: "SDK Updates",
-                        label: "SDK Updates",
-                    }
+                        tag: "angular",
+                        label: "Angular",
+                      },
+                      {
+                        tag: "vue",
+                        label: "VueJS",
+                      },
+                      {
+                        tag: "js",
+                        label: "JavaScript",
+                      }
                   ]
               }     
           } 
@@ -37,23 +42,19 @@ function App() {
           "message": "Thanks for subscribing!",
         } 
       });
-      // OneSignal.setEmail("example@gmail.com");
+
+      /**Automatically subscribe to the new_app_version topic */
+      OneSignal.sendTag("new_app_version", "new_app_version", tagsSent => {
+        // Callback called when tag has finished sending
+        console.log('new_app_version TAG SENT', tagsSent);
+      });
     });
   }, []);
 
-
-   const subscriptionHandler = (tag) => {
-    OneSignal.push(()=> {
-      OneSignal.sendTag("categorty", tag);
-    });
-   }
-
   return (
-    <div className="grid-container">
-      {
-         categories.map((category, index) => <Category key={index} {...category} onSubscribe={subscriptionHandler}/>)
-      }
-    </div>
+    <>
+      <h1>One Signal - React DEMO</h1>
+    </>
   );
 }
 
