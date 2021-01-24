@@ -43,7 +43,7 @@ function App() {
         } 
       });
 
-      /**Automatically subscribe to the new_app_version topic */
+      /**Automatically subscribe to the new_app_version tag */
       OneSignal.sendTag("new_app_version", "new_app_version", tagsSent => {
         // Callback called when tag has finished sending
         console.log('new_app_version TAG SENT', tagsSent);
