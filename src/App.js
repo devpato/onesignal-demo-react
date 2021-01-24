@@ -1,8 +1,5 @@
 import { useEffect } from 'react';
 import './App.css';
-import Category from './Category/Category';
-import categories from './Data/data';
-
 
 function App() {
   
@@ -12,19 +9,10 @@ function App() {
      */
   }, []);
 
-
-   const subscriptionHandler = (tag) => {
-    /**
-     * HERE WE ARE GOING TO SUBSCRIBE TO THE SELECTED CATEGORY (TAG)
-     */
-   }
-
   return (
-    <div className="grid-container">
-      {
-         categories.map((category, index) => <Category key={index} {...category} onSubscribe={subscriptionHandler}/>)
-      }
-    </div>
+    <>
+      <h1>One Signal - React DEMO</h1>
+    </>
   );
 }
 
