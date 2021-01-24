@@ -8,10 +8,10 @@ function App() {
   window.OneSignal = window.OneSignal || [];
   const OneSignal = window.OneSignal;
   useEffect(() => {
-    OneSignal.push(function () {
+    OneSignal.push(()=> {
       OneSignal.init(
         {
-          appId: "1a9bbed2-9294-4192-a736-01b461cb389a",
+          appId: "1a9bbed2-9294-4192-a736-01b461cb389a", //STEP 9
           promptOptions: {
             slidedown: {
               enabled: true,
@@ -44,7 +44,7 @@ function App() {
 
    const subscriptionHandler = (tag) => {
     OneSignal.push(()=> {
-      OneSignal.sendTags({ category: tag });
+      OneSignal.sendTag("categorty", tag);
     });
    }
 
